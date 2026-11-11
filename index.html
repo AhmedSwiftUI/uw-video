@@ -4,61 +4,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4F4E9">
 <title>نظام الأعمال الموحد · Unified Works System</title>
 <style>
-  html,body{margin:0;background:#0E3F3C;color:#fff;font-family:-apple-system,system-ui,"IBM Plex Sans Arabic",sans-serif;-webkit-text-size-adjust:100%}
-  header{padding:14px 16px 10px;text-align:center}
-  header b{display:block;font-size:18px;font-weight:700}
-  header span{display:block;font-size:13px;color:#BFD9D3;margin-top:3px}
-  header em{display:block;font-style:normal;font-size:12px;color:#8FBFB3;margin-top:2px;direction:ltr}
-  main{position:relative;background:#000}
-  video{width:100%;max-height:62svh;display:block;background:#000}
-  #tap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);cursor:pointer;-webkit-tap-highlight-color:transparent}
-  #tap div{background:#fff;color:#0E3F3C;border-radius:999px;padding:12px 22px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 6px 24px rgba(0,0,0,.4)}
-  #tap svg{width:22px;height:22px}
+  :root{--ink:#0E3F3C;--teal:#1F7A6B;--mint:#2FA58F;--mut:#4F6B66;--line:#D7DED9;--bg:#F4F4E9;--card:#FFFFFF;--panel:#E3ECE6}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,system-ui,"IBM Plex Sans Arabic","Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px 32px}
+  header{display:flex;align-items:center;gap:14px;padding:18px 0 14px;border-bottom:1px solid var(--line)}
+  header img{width:52px;height:52px;flex:none}
+  header .t b{display:block;font-size:19px;font-weight:700}
+  header .t span{display:block;font-size:14px;color:var(--mut);margin-top:2px;direction:ltr;text-align:right}
+  .fair{font-size:12.5px;color:var(--mut);margin:10px 0 0;line-height:1.7}
+  .fair em{font-style:normal;direction:ltr;unicode-bidi:isolate}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:16px}
+  .vbox{position:relative;background:#000}
+  video{width:100%;max-height:60svh;display:block;background:#000}
+  #tap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(14,63,60,.28);cursor:pointer;-webkit-tap-highlight-color:transparent}
+  #tap div{background:#fff;color:var(--ink);border-radius:999px;padding:11px 20px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  #tap svg{width:20px;height:20px}
   #tap.hide{display:none}
-  .cap{padding:8px 16px 0;font-size:13px;color:#BFD9D3;text-align:center}
-  section{padding:14px 16px 4px;max-width:640px;margin:0 auto}
-  h2{margin:0 0 8px;font-size:15px;font-weight:700;color:#7ED3C1}
-  h2 small{font-weight:400;color:#8FBFB3;margin-inline-start:6px;direction:ltr;unicode-bidi:isolate}
-  a.row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 14px;margin-bottom:8px;color:#fff;text-decoration:none}
-  a.row:active{background:rgba(255,255,255,.14)}
-  a.row i{flex:0 0 38px;height:38px;border-radius:10px;background:#1F7A6B;display:grid;place-items:center;font-style:normal}
-  a.row i svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  a.row b{display:block;font-size:15.5px;font-weight:600}
-  a.row span{display:block;font-size:12.5px;color:#BFD9D3;margin-top:2px}
-  a.row em{margin-inline-start:auto;font-style:normal;font-size:12px;color:#8FBFB3;white-space:nowrap;direction:ltr}
-  p.note{font-size:12.5px;color:#BFD9D3;line-height:1.6;margin:0 0 10px}
-  footer{padding:16px 14px 24px;font-size:12px;color:#8FBFB3;text-align:center;line-height:1.7}
+  .cap{padding:12px 16px 14px}
+  .cap b{display:block;font-size:15.5px;font-weight:700}
+  .cap span{display:block;font-size:13px;color:var(--mut);margin-top:3px;line-height:1.6}
+  .cap .en{direction:ltr;text-align:left;margin-top:6px}
+  h2{margin:22px 0 10px;font-size:14px;font-weight:700;color:var(--teal);display:flex;align-items:baseline;gap:8px}
+  h2 small{font-weight:600;color:var(--mut);direction:ltr;unicode-bidi:isolate;font-size:12.5px}
+  a.row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:10px;color:var(--ink);text-decoration:none}
+  a.row:active{background:var(--panel)}
+  a.row i{flex:0 0 42px;height:42px;border-radius:11px;background:var(--panel);display:grid;place-items:center;font-style:normal}
+  a.row i svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  a.row .tx{flex:1;min-width:0}
+  a.row b{display:block;font-size:15.5px;font-weight:700}
+  a.row span{display:block;font-size:12.5px;color:var(--mut);margin-top:2px;line-height:1.5}
+  a.row .en{direction:ltr;text-align:left;unicode-bidi:isolate}
+  a.row em{font-style:normal;font-size:12px;color:var(--mut);white-space:nowrap;direction:ltr;background:var(--panel);border-radius:8px;padding:4px 8px}
+  a.row .arr{flex:none;width:18px;height:18px;stroke:var(--mut);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+  p.note{font-size:13px;color:var(--mut);line-height:1.7;margin:0 0 10px}
+  p.note .en{display:block;direction:ltr;text-align:left;margin-top:4px}
+  footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut);text-align:center;line-height:1.8}
+  footer .en{display:block;direction:ltr}
 </style>
 </head>
 <body>
+<div class="wrap">
 <header>
-  <b>نظام الأعمال الموحد</b>
-  <span>نظام ذكي يراقب ويوثّق أعمال المقاولين في الميدان بمساعدة الذكاء الاصطناعي</span>
-  <em>Unified Works System · SAIF 2026</em>
+  <img src="logo.svg" alt="">
+  <div class="t"><b>نظام الأعمال الموحد</b><span>Unified Works System</span></div>
 </header>
-<main>
-  <video id="v" src="field-trial.mp4" playsinline autoplay muted controls preload="auto" poster="field-trial.jpg"></video>
-  <div id="tap"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>اضغط لتشغيل الصوت</div></div>
-</main>
-<p class="cap">فيديو التجربة الميدانية · تدقيق المستندات والمراقبة الميدانية لدى شركة كهرباء · نحو ٤ دقائق</p>
+<p class="fair">معرض ومسابقة الأمن والابتكار العالمية · <em>SAIF 2026</em> · رقم الفريق <em>SAIF130214</em></p>
 
-<section>
-  <h2>روابط المشروع <small>Links</small></h2>
-  <a class="row" href="https://unified-works.vercel.app/"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></i><div><b>الموقع التعريفي</b><span>تعريف بالنظام ومكوّناته</span></div><em>Website</em></a>
-  <a class="row" href="https://uw.81-208-191-204.sslip.io/"><i><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></i><div><b>المنصة</b><span>جرّب منصة المشرف مباشرة</span></div><em>Platform</em></a>
-  <a class="row" href="https://uw.81-208-191-204.sslip.io/status"><i><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-8 4 5"/></svg></i><div><b>الحالة والدقة</b><span>دقة النموذج الحالية وسجل التدقيق</span></div><em>Status</em></a>
-</section>
+<div class="card">
+  <div class="vbox">
+    <video id="v" src="field-trial.mp4" playsinline autoplay muted controls preload="auto" poster="field-trial.jpg"></video>
+    <div id="tap"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>اضغط لتشغيل الصوت · Tap for sound</div></div>
+  </div>
+  <div class="cap">
+    <b>فيديو التجربة الميدانية</b>
+    <span>تدقيق المستندات والمراقبة الميدانية لدى شركة كهرباء · نحو ٤ دقائق</span>
+    <span class="en">Field trial video · Document audit and field monitoring at an electricity company · about 4 minutes</span>
+  </div>
+</div>
 
-<section>
-  <h2>المراجع <small>References</small></h2>
-  <p class="note">بيانات بلاغات ٩٤٠ الصادرة من الأمانة لمنطقة سعودية واحدة، وهي مصدر أرقام البلاغات في الملصق (نوع البلاغ، الموقع، الحالة، زمن الإغلاق، التكرار).</p>
-  <a class="row" href="refs/complaints-940_Jan-Mar-2026.xlsx" download><i><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13l6 6M15 13l-6 6"/></svg></i><div><b>بلاغات ٩٤٠ · يناير – مارس ٢٠٢٦</b><span>ملف Excel · نحو ٣٤ ألف بلاغ</span></div><em>1.5 MB</em></a>
-  <a class="row" href="refs/complaints-940_Apr-Jun-2026.xlsx" download><i><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13l6 6M15 13l-6 6"/></svg></i><div><b>بلاغات ٩٤٠ · أبريل – يونيو ٢٠٢٦</b><span>ملف Excel · نحو ٢١٣ ألف بلاغ</span></div><em>6.5 MB</em></a>
-</section>
+<h2>روابط المشروع <small>Project links</small></h2>
+<a class="row" href="https://unified-works.vercel.app/">
+  <i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></i>
+  <div class="tx"><b>الموقع التعريفي</b><span>تعريف بالنظام ومكوّناته</span><span class="en">Website · About the system and its components</span></div>
+  <svg class="arr" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+</a>
+<a class="row" href="https://uw.81-208-191-204.sslip.io/">
+  <i><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></i>
+  <div class="tx"><b>المنصة</b><span>منصة المشرف للتجربة المباشرة</span><span class="en">Platform · Try the supervisor platform</span></div>
+  <svg class="arr" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+</a>
 
-<footer>نظام الأعمال الموحد · Unified Works System<br>معرض ومسابقة الأمن والابتكار العالمية SAIF 2026</footer>
+<h2>المراجع <small>References</small></h2>
+<p class="note">بيانات بلاغات ٩٤٠ الصادرة من الأمانة لمنطقة سعودية واحدة، وهي مصدر أرقام البلاغات في الملصق: نوع البلاغ، الموقع، الحالة، زمن الإغلاق، والتكرار.<span class="en">Municipality 940 complaints data for one Saudi region, the source of the complaint figures on the poster: type, location, status, closure time and repetition.</span></p>
+<a class="row" href="refs/complaints-940_Jan-Mar-2026.xlsx" download>
+  <i><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13l6 6M15 13l-6 6"/></svg></i>
+  <div class="tx"><b>بلاغات ٩٤٠ · يناير – مارس ٢٠٢٦</b><span>ملف Excel · نحو ٣٤ ألف بلاغ</span><span class="en">940 complaints · January – March 2026 · about 34k records</span></div>
+  <em>XLSX · 1.5 MB</em>
+</a>
+<a class="row" href="refs/complaints-940_Apr-Jun-2026.xlsx" download>
+  <i><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13l6 6M15 13l-6 6"/></svg></i>
+  <div class="tx"><b>بلاغات ٩٤٠ · أبريل – يونيو ٢٠٢٦</b><span>ملف Excel · نحو ٢١٣ ألف بلاغ</span><span class="en">940 complaints · April – June 2026 · about 213k records</span></div>
+  <em>XLSX · 6.5 MB</em>
+</a>
+
+<footer>نشكر الشركة السعودية للطاقة والأمانة على دعمهما.<span class="en">We thank the Saudi Energy Company and the Municipality for their support.</span></footer>
+</div>
 <script>
   var v=document.getElementById('v'),t=document.getElementById('tap');
   function go(){v.muted=false;v.volume=1;var p=v.play();if(p&&p.catch)p.catch(function(){});t.classList.add('hide');}
