@@ -24,15 +24,6 @@
   html[data-l=ar] .lang [data-set=ar],html[data-l=en] .lang [data-set=en]{background:var(--ink);color:#fff}
   .fair{font-size:12.5px;color:var(--mut);margin:10px 0 0;line-height:1.7}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:16px}
-  .vbox{position:relative;background:#000}
-  video{width:100%;max-height:60svh;display:block;background:#000}
-  #tap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(14,63,60,.28);cursor:pointer;-webkit-tap-highlight-color:transparent}
-  #tap div{background:#fff;color:var(--ink);border-radius:999px;padding:11px 20px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
-  #tap svg{width:20px;height:20px}
-  #tap.hide{display:none}
-  .cap{padding:12px 16px 14px}
-  .cap b{display:block;font-size:15.5px;font-weight:700}
-  .cap span{display:block;font-size:13px;color:var(--mut);margin-top:3px;line-height:1.6}
   h2{margin:24px 0 10px;font-size:15px;font-weight:700;color:var(--teal)}
   a.row{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:10px;color:var(--ink);text-decoration:none}
   a.row:active{background:var(--panel)}
@@ -93,17 +84,6 @@
   <div class="lang" role="group" aria-label="Language"><button data-set="ar" lang="ar">عربي</button><button data-set="en" lang="en">EN</button></div>
 </header>
 <p class="fair"><span class="ar">معرض ومسابقة الأمن والابتكار العالمية · SAIF 2026 · رقم الفريق SAIF130214</span><span class="en">Security &amp; Innovation International Fair · SAIF 2026 · Team SAIF130214</span></p>
-
-<div class="card">
-  <div class="vbox">
-    <video id="v" src="field-trial.mp4" playsinline autoplay muted controls preload="auto" poster="field-trial.jpg"></video>
-    <div id="tap"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="ar">اضغط لتشغيل الصوت</span><span class="en">Tap for sound</span></div></div>
-  </div>
-  <div class="cap">
-    <b class="ar">فيديو التجربة الميدانية</b><b class="en">Field trial video</b>
-    <span class="ar">تدقيق المستندات والمراقبة الميدانية لدى شركة كهرباء · نحو 4 دقائق</span><span class="en">Document audit and field monitoring at an electricity company · about 4 minutes</span>
-  </div>
-</div>
 
 <h2><span class="ar">روابط المشروع</span><span class="en">Project links</span></h2>
 <a class="row" href="https://unified-works.vercel.app/">
@@ -176,12 +156,6 @@
   function setLang(l){h.lang=l;h.dir=l==='en'?'ltr':'rtl';h.dataset.l=l;document.title=l==='en'?'Unified Works System':'نظام الأعمال الموحد · Unified Works System';try{localStorage.setItem('uw-lang',l)}catch(e){}}
   document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.set)})});
   setLang(h.dataset.l);
-  var v=document.getElementById('v'),tp=document.getElementById('tap');
-  function go(){v.muted=false;v.volume=1;var p=v.play();if(p&&p.catch)p.catch(function(){});tp.classList.add('hide');}
-  tp.addEventListener('click',go);
-  v.addEventListener('play',function(){if(!v.muted)tp.classList.add('hide');});
-  var tl=v.play();if(tl&&tl.then){tl.then(function(){}).catch(function(){});}
-  document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();});
 </script>
 </body>
 </html>
